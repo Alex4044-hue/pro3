@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+package dk.via.pro3.generated; // add to .gitignore
+
+service VinylService {
+  rpc AddVinyl(AddVinylRequest) returns (VinylResponse);
+  rpc GetVinyl(GetVinylRequest) returns (VinylResponse);
+}
+
+// Represents a Vinyl entity in the system.
+message Vinyl {
+  // Unique identifier
+  string id = 1;
+  // Display name of the vinyl.
+  string name = 2;
+}
+
+// Request message for creating a new vinyl.
+message AddVinylRequest {
+  // Name for the new vinyl record.
+  string name = 1;
+}
+
+// Request message for retrieving a vinyl
+message GetVinylRequest {
+  // ID of the vinyl to retrieve.
+  string id = 1;
+}
+
+message VinylResponse {
+  // The vinyl entity (created or retrieved).
+  Vinyl vinyl = 1;
+}
